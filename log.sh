@@ -1,5 +1,5 @@
 echo "WELCOME TO GM5AUG'S LOGGING PROGRAM"
-echo "Station Callsign - substitute / for -"
+echo "Station Callsign"
 read station
 echo "Station Locator"
 read locator
@@ -12,11 +12,11 @@ echo "Contest = 1, non contest = 0"
 read contest
 if [ "$contest"  == 1 ]
 then
-  echo "Callsign,Frequency,Mode,TX-RST,TX-SER,RX-RST,RX-SER,UTC-On,UTC-Off,Operator,Station,Date,Locator" >> contest_log_$station$date.csv
+  echo "Callsign,Frequency,Mode,TX-RST,TX-SER,RX-RST,RX-SER,UTC-On,UTC-Off,Operator,Station,Date,Locator" >> contest_log_${station//\//-}$date.csv
   declare -i txser=1
 elif [ "$contest" == 0 ]
 then
-  echo "Callsign,Frequency,Mode,TX-RST,RX-RST,UTC-On,UTC-Off,Operator,Station,Date,Locator" >> log_$station$date.csv
+  echo "Callsign,Frequency,Mode,TX-RST,RX-RST,UTC-On,UTC-Off,Operator,Station,Date,Locator" >> log_${station//\//-}$date.csv
 fi
 declare -i y=0
 while true
@@ -60,11 +60,11 @@ if [ "$confirm" == 1 ]
 then
   if [ "$contest" == 1 ]
   then
-    echo "$call,$freq,$mode,$tx,$txser,$rx,$rxser,$utcon,$utcoff,$op,$station,$date,$locator" >> contest_log_$station$date.csv
+    echo "$call,$freq,$mode,$tx,$txser,$rx,$rxser,$utcon,$utcoff,$op,$station,$date,$locator" >> contest_log_${station//\//-}$date.csv
     txser=$((txser+1))
   elif [ "$contest" == 0 ]
   then
-    echo "$call,$freq,$mode,$tx,$rx,$utcon,$utcoff,$op,$station,$date,$locator" >> log_$station$date.csv
+    echo "$call,$freq,$mode,$tx,$rx,$utcon,$utcoff,$op,$station,$date,$locator" >> log_${station//\//-}$date.csv
   fi
   y=$((y+1))
   echo "$y Logged"
