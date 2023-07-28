@@ -16,6 +16,10 @@ This logger can work either with CAT control or without. It can also be set up f
 * Can be used to log simple contests (more features to be added anon)
 * Confirms each QSO before logging and allows you to correct any errors
 
+## Beware!
+
+One thing to note is, when entering your station callsign, be sure to change any '/'s for '-'s - ie GM5AUG/P becomes GM5AUG-P. While this is not ideal, it is the only way I could find to make the CSV save properly. Otherwise, taking the example of GM5AUG/P, it would try to save the file 'P[date].csv' in a folder called 'log_GM5AUG'! When editing the .csv file, you can simply find/replace all instances of '-P' for '/P'.
+
 ## CAT Control
 
 To make use of the CAT control features, you need to install and run HamLib's rigctld (rig control daemon) software. This is a fairly simple procedure and, included in the repository, is the file 'xiegu.sh' which I use to start the daemon when I am out /P. This daemon should be left running in the background and, if you wish, TopLog will connect to it and take frequency and mode information from the radio.
