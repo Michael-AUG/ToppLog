@@ -1,4 +1,5 @@
 echo "WELCOME TO GM5AUG'S LOGGING PROGRAM"
+echo "-----------------------------"
 echo "Station Callsign"
 read station
 echo "Station Locator"
