@@ -8,7 +8,7 @@ This logger can work either with CAT control or without. It can also be set up f
 
 ## Features
 
-* Logs based on UTC time
+* Logs based on UTC time by default
 * Exports log into .csv format for easy conversion to ADIF etc
 * Includes support for HamLib's rigctl CAT control software (separate installation needed)
 * Requires very little in the way of processing power
