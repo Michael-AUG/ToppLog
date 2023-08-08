@@ -1,4 +1,4 @@
-# TopLog - Not Another Logger?
+# ToppLog - Not Another Logger?
 
 With the plethora of amateur radio logging solutions out there, why would you want to use this one?
 
