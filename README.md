@@ -19,15 +19,15 @@ This logger can work either with CAT control or without. It can also be set up f
 
 ## CAT Control
 
-To make use of the CAT control features, you need to install and run HamLib's rigctld (rig control daemon) software. This is a fairly simple procedure and, included in the repository, is the file 'xiegu.sh' which I use to start the daemon when I am out /P. This daemon should be left running in the background and, if you wish, TopLog will connect to it and take frequency and mode information from the radio. For more information, see [rigctld](https://www.mankier.com/1/rigctld).
+To make use of the CAT control features, you need to install and run Hamlib's rigctld (rig control daemon) software. This is a fairly simple procedure and, included in the repository, is the file 'xiegu.sh' which I use to start the daemon when I am out /P. This daemon should be left running in the background and, if you wish, ToppLog will connect to it and take frequency and mode information from the radio. For more information, see [man rigctld](https://www.mankier.com/1/rigctld) and the [Hamlib GitHub repo](https://github.com/Hamlib/Hamlib).
 
-## Contests
+## Contesting
 
 As mentioned above, this logging software includes basic support for contests - namely a serial counter (1,2,3 etc) and a space to log the other station's serial. In time I may add other features, but bear in mind this is a simple logger and not designed to deal with complex contests. There are plenty of better contest loggers out there!
 
 ## Feedback
 
-If you have any feedback about TopLog, or want to see new features added (within reason!), please contact me. Either using GitHub, or via [gm5aug@topple.scot](mailto:gm5aug@topple.scot).
+If you have any feedback about ToppLog, or want to see new features added (within reason!), please contact me. Either using GitHub, or via [gm5aug@topple.scot](mailto:gm5aug@topple.scot).
 
 Happy logging!
 
