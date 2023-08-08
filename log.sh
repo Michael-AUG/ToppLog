@@ -15,11 +15,12 @@ if [ "$contest"  == 1 ]
 then
   echo "Callsign,Frequency,Mode,TX-RST,TX-SER,RX-RST,RX-SER,UTC-On,UTC-Off,Operator,Station,Date,Locator" >> contest_log_${station//\//-}$date.csv
   declare -i txser=1
-elif [ "$contest" == 0 ]
+elif [ -z "$contest" ]
 then
   echo "Callsign,Frequency,Mode,TX-RST,RX-RST,UTC-On,UTC-Off,Operator,Station,Date,Locator" >> log_${station//\//-}$date.csv
 fi
 declare -i y=0
+
 while true
 do
 echo "-----------------------------"
@@ -32,12 +33,21 @@ then
   mode=$(rigctl -m2 \get_mode|awk 'NR==1{print $1}')
   echo "Freq and mode from radio"
   echo "$freq $mode"
-elif [ "$catcont" == 0 ]
+elif [ -z "$catcont" ]
 then
-  echo "Frequency"
-  read freq
-  echo "Mode"
-  read mode
+  echo "Same Freq and Mode = 1 Diff Freq and Mode = 0"
+  read same
+  if [ -z "$same" ]
+  then
+    echo "Frequency"
+    read freq
+    echo "Mode"
+    read mode
+  elif [ "$same" == 1 ]
+  then
+    echo "Freq and Mode"
+    echo "$freq $mode"
+  fi
 fi
 if [ "$contest" == 1 ]
 then
@@ -46,7 +56,7 @@ then
   echo "TX Serial $txser"
   echo "RX Serial"
   read rxser
-elif [ "$contest" == 0 ]
+elif [ -z "$contest" ]
 then
   echo "TX RST"
   read tx
@@ -63,14 +73,15 @@ then
   then
     echo "$call,$freq,$mode,$tx,$txser,$rx,$rxser,$utcon,$utcoff,$op,$station,$date,$locator" >> contest_log_${station//\//-}$date.csv
     txser=$((txser+1))
-  elif [ "$contest" == 0 ]
+  elif [ -z "$contest" ]
   then
     echo "$call,$freq,$mode,$tx,$rx,$utcon,$utcoff,$op,$station,$date,$locator" >> log_${station//\//-}$date.csv
   fi
   y=$((y+1))
   echo "$y Logged"
-elif [ "$confirm" == 0 ]
+elif [ -z "$confirm" ]
 then
   echo "re-enter details"
 fi
+sleep 2
 done
