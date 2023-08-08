@@ -1,4 +1,4 @@
-echo "WELCOME TO GM5AUG'S LOGGING PROGRAM"
+echo "WELCOME TO ToppLog - GM5AUG'S LOGGING PROGRAM"
 echo "-----------------------------"
 echo "Station Callsign"
 read station
