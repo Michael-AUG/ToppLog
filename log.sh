@@ -7,6 +7,8 @@ read locator
 date=$(date +%Y%m%d)
 echo "Station Operator"
 read op
+echo "TXCVR Power (W)"
+read power
 echo "CAT control = 1, manual = 0"
 read catcont
 echo "Contest = 1, non contest = 0"
@@ -14,11 +16,11 @@ read contest
 
 if [ "$contest"  == 1 ]
 then
-  echo "Callsign,Frequency,Mode,TX-RST,TX-SER,RX-RST,RX-SER,UTC-On,UTC-Off,Operator,Station,Date,Locator" >> contest_log_${station//\//-}$date.csv
+  echo "Callsign,Frequency,Mode,TX-RST,TX-SER,RX-RST,RX-SER,UTC-On,UTC-Off,Operator,Station,Date,Power,Locator" >> contest_log_${station//\//-}$date.csv
   declare -i txser=1
 elif [ "$contest" -ne 1 ]
 then
-  echo "Callsign,Frequency,Mode,TX-RST,RX-RST,UTC-On,UTC-Off,Operator,Station,Date,Locator" >> log_${station//\//-}$date.csv
+  echo "Callsign,Frequency,Mode,TX-RST,RX-RST,UTC-On,UTC-Off,Operator,Station,Date,Power,Locator" >> log_${station//\//-}$date.csv
 fi
 
 declare -i y=0
@@ -80,11 +82,11 @@ then
 
   if [ "$contest" == 1 ]
   then
-    echo "$call,$freq,$mode,$tx,$txser,$rx,$rxser,$utcon,$utcoff,$op,$station,$date,$locator" >> contest_log_${station//\//-}$date.csv
+    echo "$call,$freq,$mode,$tx,$txser,$rx,$rxser,$utcon,$utcoff,$op,$station,$date,$power,$locator" >> contest_log_${station//\//-}$date.csv
     txser=$((txser+1))
   elif [ "$contest" -ne 1 ]
   then
-    echo "$call,$freq,$mode,$tx,$rx,$utcon,$utcoff,$op,$station,$date,$locator" >> log_${station//\//-}$date.csv
+    echo "$call,$freq,$mode,$tx,$rx,$utcon,$utcoff,$op,$station,$date,$power,$locator" >> log_${station//\//-}$date.csv
   fi
 
   y=$((y+1))
