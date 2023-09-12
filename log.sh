@@ -2,6 +2,7 @@ echo "WELCOME TO ToppLog - GM5AUG'S LOGGING PROGRAM"
 echo "-----------------------------"
 echo "Station Callsign"
 read station
+filename=$(echo $station | sed 's/^\///;s/\//_/g')
 echo "Station Locator"
 read locator
 date=$(date +%Y%m%d)
@@ -14,13 +15,13 @@ read catcont
 echo "Contest = 1, non contest = 0"
 read contest
 
-if [ "$contest"  == 1 ]
+if [ "$contest"  -eq 1 ]
 then
-  echo "Callsign,Frequency,Mode,TX-RST,TX-SER,RX-RST,RX-SER,UTC-On,UTC-Off,Operator,Station,Date,Power,Locator" >> contest_log_${station//\//-}$date.csv
+  echo "Callsign,Frequency,Mode,TX-RST,TX-SER,RX-RST,RX-SER,UTC-On,UTC-Off,Operator,Station,Date,Power,Locator" >> contest_log_$filename_$date.csv
   declare -i txser=1
 elif [ "$contest" -ne 1 ]
 then
-  echo "Callsign,Frequency,Mode,TX-RST,RX-RST,UTC-On,UTC-Off,Operator,Station,Date,Power,Locator" >> log_${station//\//-}$date.csv
+  echo "Callsign,Frequency,Mode,TX-RST,RX-RST,UTC-On,UTC-Off,Operator,Station,Date,Power,Locator" >> log_$filename_$date.csv
 fi
 
 declare -i y=0
@@ -32,7 +33,7 @@ echo "Callsign"
 read call
 utcon=$(date -u +%H%M%S)
 
-if [ "$catcont" == 1 ]
+if [ "$catcont" -eq 1 ]
 then
   rawFreq=$(rigctl -m2 \get_freq)
   freq=$(echo "scale=4; $rawFreq / 1000000" | bc)
@@ -50,14 +51,14 @@ then
     read freq
     echo "Mode"
     read mode
-  elif [ "$same" == 1 ]
+  elif [ "$same" -eq 1 ]
   then
     echo "Freq and Mode"
     echo "$freq $mode"
   fi
 fi
 
-if [ "$contest" == 1 ]
+if [ "$contest" -eq 1 ]
 then
   declare -i tx=599
   declare -i rx=599
@@ -77,16 +78,16 @@ echo "Correct? 1 or 0"
 echo "$call $freq $mode $tx $rx $utc $op"
 read confirm
 
-if [ "$confirm" == 1 ]
+if [ "$confirm" -eq 1 ]
 then
 
-  if [ "$contest" == 1 ]
+  if [ "$contest" -eq 1 ]
   then
-    echo "$call,$freq,$mode,$tx,$txser,$rx,$rxser,$utcon,$utcoff,$op,$station,$date,$power,$locator" >> contest_log_${station//\//-}$date.csv
+    echo "$call,$freq,$mode,$tx,$txser,$rx,$rxser,$utcon,$utcoff,$op,$station,$date,$power,$locator" >> contest_log_$filename_$date.csv
     txser=$((txser+1))
   elif [ "$contest" -ne 1 ]
   then
-    echo "$call,$freq,$mode,$tx,$rx,$utcon,$utcoff,$op,$station,$date,$power,$locator" >> log_${station//\//-}$date.csv
+    echo "$call,$freq,$mode,$tx,$rx,$utcon,$utcoff,$op,$station,$date,$power,$locator" >> log_$filename_$date.csv
   fi
 
   y=$((y+1))
@@ -96,6 +97,6 @@ then
   echo "re-enter details"
 fi
 
-sleep 2
+sleep 1
 
 done
