@@ -21,6 +21,10 @@ This logger can work either with CAT control or without. It can also be set up f
 
 To make use of the CAT control features, you need to install and run Hamlib's rigctld (rig control daemon) software. This is a fairly simple procedure and, included in the repository, is the file 'xiegu.sh' which I use to start the daemon when I am out /P. This daemon should be left running in the background and, if you wish, ToppLog will connect to it and take frequency and mode information from the radio. For more information, see [man rigctld](https://www.mankier.com/1/rigctld) and the [Hamlib GitHub repo](https://github.com/Hamlib/Hamlib).
 
+## CSV to ADIF
+
+There are many ways to convert between CSV and ADIF, but I recommend this one - [csv2adif](https://github.com/M0LTE/csv2adif) - written by [Tom M0LTE](https://github.com/M0LTE), which he wrote to work with ToppLog's CSV output.
+
 ## Contesting
 
 As mentioned above, this logging software includes basic support for contests - namely a serial counter (1,2,3 etc) and a space to log the other station's serial. In time I may add other features, but bear in mind this is a simple logger and not designed to deal with complex contests. There are plenty of better contest loggers out there!
