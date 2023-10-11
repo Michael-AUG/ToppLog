@@ -23,7 +23,7 @@ To make use of the CAT control features, you need to install and run Hamlib's ri
 
 ## CSV to ADIF
 
-There are many ways to convert between CSV and ADIF, but I recommend this one - [csv2adif](https://github.com/M0LTE/csv2adif) - written by [Tom M0LTE](https://github.com/M0LTE), which he wrote to work with ToppLog's CSV output.
+There are many ways to convert between CSV and ADIF, but I recommend this one - [csv2adif](https://github.com/M0LTE/csv2adif) - written by [Tom M0 LTE](https://github.com/M0LTE), which he wrote to work with ToppLog's CSV output.
 
 ## Contesting
 
@@ -35,6 +35,6 @@ If you have any feedback about ToppLog, or want to see new features added (withi
 
 Happy logging!
 
-73 Michael GM5AUG
+73 Michael GM5 AUG
 
-gm5aug.topple.scot
+[gm5aug.topple.scot](https://gm5aug.topple.scot)
