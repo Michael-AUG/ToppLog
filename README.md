@@ -16,6 +16,7 @@ This logger can work either with CAT control or without. It can also be set up f
 * Can be used to log simple incremental number contests (more features to be added anon)
 * Confirms each QSO before logging and allows you to correct any errors
 * Allows user to carry manually entered frequency and mode information over multiple QSOs to save entering the same information each time
+* **NEW** Allows entry of both live **and post** QSOs, meaning you can quickly enter QSOs made while away from the computer
 
 ## CAT Control
 
@@ -23,7 +24,7 @@ To make use of the CAT control features, you need to install and run Hamlib's ri
 
 ## CSV to ADIF
 
-There are many ways to convert between CSV and ADIF, but I recommend this one - [csv2adif](https://github.com/M0LTE/csv2adif) - written by [Tom M0 LTE](https://github.com/M0LTE), which he wrote to work with ToppLog's CSV output.
+There are many ways to convert between CSV and ADIF, but I recommend this one - [csv2adif](https://github.com/M0LTE/csv2adif) - written by [Tom M0LTE](https://github.com/M0LTE), which he wrote to work with ToppLog's CSV output.
 
 ## Contesting
 
@@ -35,6 +36,6 @@ If you have any feedback about ToppLog, or want to see new features added (withi
 
 Happy logging!
 
-73 Michael GM5 AUG
+73 Michael GM5AUG
 
 [gm5aug.topple.scot](https://gm5aug.topple.scot)

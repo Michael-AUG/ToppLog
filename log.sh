@@ -1,11 +1,10 @@
-echo "WELCOME TO ToppLog - GM5 AUG'S LOGGING PROGRAM"
+echo "WELCOME TO ToppLog - GM5AUG'S LOGGING PROGRAM"
 echo "-----------------------------"
 echo "Station Callsign"
 read station
 filename=$(echo $station | sed 's/^\///;s/\//_/g')
 echo "Station Locator"
 read stationLocator
-date=$(date +%Y%m%d)
 echo "Station Operator"
 read op
 echo "CAT control = 1, manual = 0"
@@ -18,6 +17,19 @@ read maxPower
 fi
 echo "Contest = 1, non contest = 0"
 read contest
+
+echo "Live log = 1 or post log = 0 ?"
+read livepost
+
+if [ "$livepost" -eq 1 ]
+then
+date=$(date +%Y%m%d)
+elif [ "$livepost" -ne 1 ]
+then
+echo "Date YYYYMMDD"
+read date
+fi
+
 
 if [ "$contest"  -eq 1 ]
 then
@@ -35,7 +47,16 @@ do
 echo "-----------------------------"
 echo "Callsign"
 read call
+
+if [ "$livepost" -eq 1 ]
+then
 utcon=$(date -u +%H%M%S)
+elif [ "$livepost" -ne 1 ]
+then
+echo "QSO UTC time HHMMSS"
+read utcon
+fi
+
 
 if [ "$catcont" -eq 1 ]
 then
@@ -89,7 +110,16 @@ then
   fi
 fi
 
+if [ "$livepost" -eq 1 ]
+then
 utcoff=$(date -u +%H%M%S)
+elif [ "$livepost" -ne 1 ]
+then
+echo "QSO UTC time off HHMMSS"
+read utcoff
+fi
+
+
 echo "Correct? 1 or 0"
 echo "$call $freq $mode $tx $rx $utc $op $locator"
 read confirm
