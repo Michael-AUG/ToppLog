@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "WELCOME TO ToppLog - GM5AUG'S LOGGING PROGRAM"
 echo "-----------------------------"
 echo "Station Callsign"
